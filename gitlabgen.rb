@@ -49,7 +49,6 @@ license.licensee = {
 # Required.
 license.starts_at         = Date.today
 
-
 # Restrictions bundled with this license.
 # Not required, to allow unlimited-user licenses for things like educational organizations.
 license.restrictions = {
@@ -60,6 +59,10 @@ license.restrictions = {
 # Export the license, which encrypts and encodes it.
 data = license.export
 
-puts "Exported license:"
+puts "Exported license to file '#{company}.gitlab-license'"
+File.open("#{company}.gitlab-license", 'w') { |file| file.write(data) }
 puts data
 puts "Don't forget to replace the public key in /opt/gitlab/embedded/service/gitlab-rails/.license_encryption_key.pub! Good luck!"
+
+
+
